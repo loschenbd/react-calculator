@@ -11,13 +11,12 @@ const numValues = [
   { id: "two", value: "2" },
   { id: "three", value: "3" },
   { id: "zero", value: "0" },
-  { id: "decimal", value: "." },
 ];
 
-  const Buttons = (props) => numValues.map((button) => {
+  const NumButtons = (props) => numValues.map((button) => {
     return  (
       <button
-        className="calc-button"
+        className="num-button"
         id={button.id}
         key={button.id}
         onClick={() => props.handleClick(button.value)}>
@@ -28,4 +27,4 @@ const numValues = [
   })
 
 
-export default Buttons;
+export default NumButtons;

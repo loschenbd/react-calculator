@@ -4,10 +4,11 @@ const opValues = [
   { id: "add", value: "+" },
   { id: "subtract", value: "-" },
   { id: "multiply", value: "*" },
-  { id: "divide", value: "/" }
+  { id: "divide", value: "/" },
+  { id: "decimal", value: "."}
 ];
 
-const Operators = (props) => opValues.map((button) => {
+const OperatorButtons = (props) => opValues.map((button) => {
   return (
     <button
       className="op-button"
@@ -20,4 +21,4 @@ const Operators = (props) => opValues.map((button) => {
   )
 })
 
-export default Operators
+export default OperatorButtons
