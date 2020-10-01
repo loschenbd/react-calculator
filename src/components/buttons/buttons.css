@@ -23,7 +23,11 @@ button {
 }
 
 #zero {
-    width: 100%;
+    width: 50%;
+}
+
+#decimal {
+    width: 50%;
 }
 .op-container {
     width: 20%;

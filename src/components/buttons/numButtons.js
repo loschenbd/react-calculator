@@ -11,6 +11,7 @@ const numValues = [
   { id: "two", value: "2" },
   { id: "three", value: "3" },
   { id: "zero", value: "0" },
+  { id: "decimal", value: "."}
 ];
 
   const NumButtons = (props) => numValues.map((button) => {

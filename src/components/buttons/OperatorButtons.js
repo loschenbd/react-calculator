@@ -5,7 +5,6 @@ const opValues = [
   { id: "subtract", value: "-" },
   { id: "multiply", value: "*" },
   { id: "divide", value: "/" },
-  { id: "decimal", value: "."}
 ];
 
 const OperatorButtons = (props) => opValues.map((button) => {

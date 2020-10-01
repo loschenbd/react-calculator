@@ -27,19 +27,34 @@ class App extends Component {
     this.state = {
       currentNumber: "0",
       prevNumber: undefined,
-      input: "0",
+      display: "0",
       operation: undefined
     }
   }
 
-  concatInput = val => {
-    const { currentNumber } = this.state;
-
+  clear = () => {
+    console.log("clear");
     this.setState({
-      prevNumber: currentNumber + val
-    })
+      currentNumber: "0",
+      prevNumber: undefined,
+      display: "0",
+      operation: undefined
+    });
+  };
 
+  concatNumber = number => {
+    let newNumber = this.state.currentNumber.toString();
+    if(number === '.' && this.state.currentNumber.includes('.')) return;
+    this.setState({ currentNumber: newNumber + number.toString()});
+    console.log(number);
+  }
 
+  useOperator = (operator) => {
+  console.log("Use Operator " + operator)
+  }
+
+  evaluate = () => {
+    console.log("perform evaluation")
   }
     /* if (val does not start with multiple zeros) {
   set state to button value;
@@ -66,16 +81,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Display input={this.state.input}/>
+        <Display input={this.state.currentNumber}/>
         <div className="button-container">
         <div className="num-container">
-        <NumButtons handleClick={this.concatInput}/>
+        <NumButtons handleClick={this.concatNumber}/>
         </div>
         <div className="op-container">
-        <OperatorButtons handleClick={this.concatInput}/>
+        <OperatorButtons handleClick={this.useOperator}/>
         </div>
         <EvalButton handleEval={() => this.setState({input: math.evaluate(this.state.input)})}>=</EvalButton>
-        <ClearButton handleClear={() => this.setState({input: "0"})}>Clear</ClearButton>
+        <ClearButton handleClear={this.clear}>Clear</ClearButton>
         </div>
 
       </div>
