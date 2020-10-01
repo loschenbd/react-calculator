@@ -36,7 +36,7 @@ class App extends Component {
     console.log("clear");
     this.setState({
       currentNumber: "0",
-      prevNumber: undefined,
+      prevNumber: "0",
       display: "0",
       operation: undefined
     });
@@ -44,24 +44,41 @@ class App extends Component {
 
   concatNumber = number => {
     let newNumber = this.state.currentNumber.toString();
-    if(number === '.' && this.state.currentNumber.includes('.')) return;
+    if(number === '.' && newNumber.includes('.')) return;
     this.setState({ currentNumber: newNumber + number.toString()});
-    console.log(number);
-  }
+  };
 
   useOperator = (operator) => {
     this.setState({ operation: operator});
     if (this.state.currentNumber === "0") {return this.setState({ currentNumber: "input a number"})}
     if (this.state.prevNumber !== "0") {
+      this.setState({ currentNumber: this.state.prevNumber});
       this.evaluate()
     }
-    this.setState({ prevNumber: this.state.currentNumber});
-    this.setState({ currentNumber: operator});
-  }
+    this.setState({ currentNumber: this.state.prevNumber});
+    this.setState({ prevNumber: this.state.currentNumber + operator});
+  };
 
   evaluate = () => {
-    this.setState({ currentNumber: math.evaluate(`${this.state.currentNumber} ${this.state.operation} {$this.state.prevNumber}`)})
-  }
+    let prev = parseFloat(this.state.prevNumber);
+    let current = parseFloat(this.state.currentNumber);
+    switch (this.state.operation) {
+      case "+":
+        this.setState({ currentNumber: current + prev});
+        break
+      case "-":
+        this.setState({ currentNumber: current - prev});
+        break
+      case "*":
+        this.setState({ currentNumber: current * prev});
+        break
+      case "/":
+        this.setState({ currentNumber: current / prev});
+        break
+      default:
+        return
+    }
+  };
     /* if (val does not start with multiple zeros) {
   set state to button value;
   } else if (val has one decimal{
