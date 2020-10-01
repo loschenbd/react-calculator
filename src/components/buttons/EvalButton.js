@@ -4,7 +4,7 @@ const EvalButton = (props) => {
   return (
     <div>
       <button
-        onClick={props.handleEval}
+        onClick={props.handleEvaluate}
         id="equals">
         {props.children}
       </button>
