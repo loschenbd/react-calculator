@@ -33,12 +33,19 @@ concatNumber = (number) => {
   if (this.state.display === 0 && number === "0") {
     return;
   }
-  if (number !== ".") {
+  if (number !== "." && this.state.display === 0) {
+    this.setState({
+      display: number,
+      operator: false
+    });
+  } else if (number !== "." && number !== 0) {
     this.setState({
       display: this.state.display + number,
       operator: false
     });
-  } else if (number === "." && this.state.decimal === true) {
+  }
+
+    else if (number === "." && this.state.decimal === true) {
       return;
   } else { this.setState({
     operator: false,
